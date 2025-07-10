@@ -15,6 +15,6 @@ default_strategy = {
         "use_semantic_search": True,
         "search_terms": user_query,
         "pandas_query": None,
-        "display_columns": ["Name", "combined_categories"]
+        "display_columns": ["Name", "combined_categories" ,"emails" ]
     }
 
