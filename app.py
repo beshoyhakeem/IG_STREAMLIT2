@@ -13,7 +13,7 @@ for message in st.session_state.messages:
 
 st.session_state.response_shown = False
 
-if Niche_query := st.chat_input("input Niche Required"):
+if Niche_query := st.chat_input("Campaign Requirements"):
     st.session_state.messages.append({"role":"user", "content": Niche_query})
     with st.chat_message("user"):
         st.markdown(Niche_query)
