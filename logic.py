@@ -145,7 +145,46 @@ def RAG_GPT(user_query, default_strategy):
     }
 
 
+def csv_out (mod_res):
 
+    csv_prompt = f""" 
+    {mod_res}
+    Given this response from a model take the users in the response and their emails and the Personalized email for each user 
+    your job is to put them in two lists 'emails', 'Personalized_Email' and both in a dict E_P
+
+    like this example
+
+    E_P = {{'emails':['email_for_user_1', 'email_for_user_2','email_for_other_users',...],
+            
+            'Personalized_Email': ['Personalized_Email_for_user1', 'Personalized_Email_for_user2','Personalized_Email_for_other_users',...]
+            }}
+
+    the output is E_P dict and assigned lists 'emails' and 'Personalized_Email' only nothing more or less no other data ONLY THE Dictionary
+    """
+
+    chat_response = chat_client.chat.completions.create(
+        model="gpt-4.1",
+        messages=[{"role": "user", "content": csv_prompt}],
+        temperature=0.1
+    )
+    response_csv = chat_response.choices[0].message.content
+
+    dict_part = response_csv.split('=', 1)[1].strip()
+
+    # Convert to actual dictionary
+    pp = ast.literal_eval(dict_part)
+
+    email_s = pp['emails']
+    personalized_emails = pp['Personalized_Email']
+
+    emails = pd.DataFrame(columns=['Email','Personalized Email'])
+
+    emails['Email'] = email_s
+    emails['Personalized Email'] = personalized_emails
+
+    
+
+    return emails
 
 
   
