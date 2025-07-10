@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import faiss
 import json
-
+from IPython.display import Markdown
 
 DATA_PATH = 'C:/Users/besho/Desktop/IG-PROJECT/RAG_streamlit/RAG_streamlit/gpt_rag.csv'
 FAISS_PATH = "C:/Users/besho/Desktop/IG-PROJECT/RAG_streamlit/RAG_streamlit/cosine_sim_index.faiss"
