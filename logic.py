@@ -44,6 +44,8 @@ def RAG_GPT(user_query, default_strategy):
     1. If the user wants influencers by content category (e.g., travel, fashion), use semantic search on 'combined_categories'
     2. If they specify metadata filters (followers range, country, etc.), generate a pandas query
     3. If both are needed, do semantic search first then apply filters
+
+    And Always return 'emails' column in pandas query even if the user didn't ask for email 
     
     Return JSON with:
     {{
