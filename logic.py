@@ -1,6 +1,7 @@
 from Azure_openai import *
 from config import *
 from utils import *
+import ast
 
 daf, index = check_data()
 
