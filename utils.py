@@ -3,9 +3,8 @@ import pandas as pd
 import faiss
 import json
 
-DATA_PATH = "C:/Users/besho/Desktop/IG-PROJECT/RAG_streamlit/RAG_streamlit/project_demo/files/gpt_rag.csv"
-FAISS_PATH = "C:/Users/besho/Desktop/IG-PROJECT/RAG_streamlit/RAG_streamlit/project_demo/files/cosine_sim_index.faiss"
-
+DATA_PATH = 'files/gpt_rag.csv'
+FAISS_PATH = "files/cosine_sim_index.faiss"
 
 def check_data():
     global daf, index
