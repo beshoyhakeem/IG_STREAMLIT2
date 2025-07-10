@@ -2,4 +2,3 @@ openai
 faiss-cpu
 pandas
 numpy
-IPython

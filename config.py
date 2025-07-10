@@ -1,13 +1,15 @@
 import pandas as pd
 
-
+"""
 
 use_semantic = True
-user_query = ""
+
 search_terms = ""
 pandas_query = None
-display_cols = []
+#display_cols = []
 results = pd.DataFrame()
+"""
+user_query = ""
 
 default_strategy = {
         "use_semantic_search": True,
