@@ -42,11 +42,9 @@ def RAG_GPT(user_query, default_strategy):
     Available metadata columns: {list(daf.columns)}
     
     Decide the search strategy:
-    1. If the user wants influencers by content category (e.g., travel, fashion), use semantic search on 'combined_categories'
-    2. If they specify metadata filters (followers range, country, etc.), generate a pandas query
+    1. If the user specified campaign requriments (e.g., medicine, fitness) or influencers by content category (e.g., travel, fashion), use semantic search on 'combined_categories'
+    2. If the user specify metadata filters (followers range, country, etc.), generate a pandas query
     3. If both are needed, do semantic search first then apply filters
-
-    And Always return 'emails' column in pandas query even if the user didn't ask for email 
     
     Return JSON with:
     {{
@@ -123,7 +121,7 @@ def RAG_GPT(user_query, default_strategy):
     
     Then write a personlized email for each one required*
 
-    1- Mentions their name , IG category And email 
+    1- Mentions their name , instagram id , Youtube id , IG category And email 
     2-References a detail or theme (e.g., recent trip, content style)
     3-Introduces the brand and campaign
     4-Ends with a friendly CTA
