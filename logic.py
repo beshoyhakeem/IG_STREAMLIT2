@@ -42,7 +42,7 @@ def RAG_GPT(user_query, default_strategy):
     Available metadata columns: {list(daf.columns)}
     
     Decide the search strategy:
-    1. If the user specified campaign requriments (e.g., medicine, fitness) or influencers by content category (e.g., travel, fashion), use semantic search on 'combined_categories'
+    1. If the user specified campaign requriments (e.g., medicine, fitness) or influencers by content category (e.g., travel, fashion), And generate search terms depending on user's request, use semantic search on 'combined_categories'
     2. If the user specify metadata filters (followers range, country, etc.), generate a pandas query
     3. If both are needed, do semantic search first then apply filters
     
@@ -109,8 +109,9 @@ def RAG_GPT(user_query, default_strategy):
     You are an influencer marketing analyst at 6Degrees. Given a list of influencer profiles and campaign criteria, do the following:
 
     1-Score each influencer from 0 to 100 based on relevance.
-    2-Provide a short explanation of the score and mention their name , instagram id , Youtube id , IG category And email
-    3-Select the top 10 most relevant influencers
+    2-Provide a short explanation of the score 
+    3-Mention their name, Instagram ID, YouTube ID, IG category And email
+    4-Select the top 10 most relevant influencers
 
     Scoring Criteria:
 
@@ -121,7 +122,7 @@ def RAG_GPT(user_query, default_strategy):
     
     Then write a personlized email for each one required*
 
-    1- Mentions their name , IG category And email 
+    1-Mentions their name , IG category And email 
     2-References a detail or theme (e.g., recent trip, content style)
     3-Introduces the brand and campaign
     4-Ends with a friendly CTA
