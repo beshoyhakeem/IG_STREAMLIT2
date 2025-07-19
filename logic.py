@@ -104,7 +104,7 @@ def RAG_GPT(user_query, default_strategy):
     - Pandas query: {pandas_query or 'None'}
     
     Top {min(5, len(results))} influencers:
-    {results[display_cols].head(100).to_string()}
+    {results.head(100).to_string()}
     
     You are an influencer marketing analyst at 6Degrees. Given a list of influencer profiles and campaign criteria, do the following:
 
