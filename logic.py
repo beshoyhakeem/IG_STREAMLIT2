@@ -106,9 +106,11 @@ def RAG_GPT(user_query, default_strategy):
     Top {min(5, len(results))} influencers:
     {results[display_cols].head(100).to_string()}
     
-    You are an influencer marketing analyst at 6Degrees. Given a list of influencer profiles and campaign criteria
+    You are an influencer marketing analyst at 6Degrees. Given a list of influencer profiles and campaign criteria, do the following:
 
-    List the influencers that the user asked for and with the details that the user wants, but always mention their name, Instagram ID, YouTube ID, IG category And email
+    1- List the influencers that the user asked for and with the details that the user wants,
+    2- mention their name, Instagram ID, YouTube ID, IG category And email
+    3- Put the influencers' data in an organized table                                             
 
     """
 
