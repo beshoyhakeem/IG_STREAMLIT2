@@ -108,7 +108,7 @@ def RAG_GPT(user_query, default_strategy):
     
     You are an influencer marketing analyst at 6Degrees. Given a list of influencer profiles and campaign criteria
 
-    List the influencers that the user asked for and with the details that the user wants
+    List the influencers that the user asked for and with the details that the user wants, but always mention their name, Instagram ID, YouTube ID, IG category And email
 
     """
 
