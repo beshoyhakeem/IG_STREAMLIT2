@@ -104,30 +104,12 @@ def RAG_GPT(user_query, default_strategy):
     - Pandas query: {pandas_query or 'None'}
     
     Top {min(5, len(results))} influencers:
-    {results[display_cols].head(10).to_string()}
+    {results[display_cols].head(100).to_string()}
     
-    You are an influencer marketing analyst at 6Degrees. Given a list of influencer profiles and campaign criteria, do the following:
+    You are an influencer marketing analyst at 6Degrees. Given a list of influencer profiles and campaign criteria
 
-    1-Score each influencer from 0 to 100 based on relevance.
-    2-Provide a short explanation of the score 
-    3-Mention their name, Instagram ID, YouTube ID, IG category And email
-    4-Select the top 10 most relevant influencers
+    List the influencers that the user asked for and with the details that the user wants
 
-    Scoring Criteria:
-
-    1-Follower count (relative to campaign target)
-    2-Platform match
-    3-Engagement rate
-    4-Content category alignment
-    
-    Then write a personlized email for each one required*
-
-    1-Mentions their name , IG category And email 
-    2-References a detail or theme (e.g., recent trip, content style)
-    3-Introduces the brand and campaign
-    4-Ends with a friendly CTA
-
-    Tone: Friendly, personal, professional — not robotic or corporate.
     """
 
     chat_response = chat_client.chat.completions.create(
