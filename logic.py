@@ -46,12 +46,15 @@ def RAG_GPT(user_query, default_strategy):
     2. If the user specify metadata filters (followers range, country, etc.), generate a pandas query
     3. If both are needed, do semantic search first then apply filters
     
+    - Allways Display columns ['Name', 'instagramId','YouTube ID', 'Followers\r\n(Instagram)','Subscribers\r\n(YouTube)','emails'] + columns related to user query
+ 
+    
     Return JSON with:
     {{
         "use_semantic_search": boolean,
         "search_terms": "terms for semantic search",
         "pandas_query": "query string or null",
-        "display_columns": ["relevant", "columns"]
+        "display_columns": ["Name", "instagramId","YouTube ID", "Followers\r\n(Instagram)","Subscribers\r\n(YouTube)" , "emails" + "columns related to user query"]
     }}
     """
 
@@ -59,7 +62,7 @@ def RAG_GPT(user_query, default_strategy):
     analysis_response = chat_client.chat.completions.create(
         model="chatgpt-4o-latest",
         messages=[{"role": "user", "content": analysis_prompt}],
-        temperature=0.0,
+        temperature=0.4,
         response_format={"type": "json_object"}
         )
     
@@ -104,20 +107,20 @@ def RAG_GPT(user_query, default_strategy):
     - Pandas query: {pandas_query or 'None'}
     
     Top {min(5, len(results))} influencers:
-    {results.head(100).to_string()}
+    {results[display_cols].head(100).to_string()}
     
     You are an influencer marketing analyst at 6Degrees. Given a list of influencer profiles and campaign criteria, do the following:
 
     1- List the influencers that the user asked for and with the details that the user wants,
-    2- mention their name, Instagram ID, YouTube ID, IG category And email
-    3- Put the influencers' data in an organized table                                             
+    2- mention their name, Instagram ID, YouTube ID, IG Followers, Youtube subs, And email + columns or any information related to user query
+    3- Put the all influencers' data in an organized table                                             
 
     """
 
     chat_response = chat_client.chat.completions.create(
     model="chatgpt-4o-latest",
     messages=[{"role": "user", "content": response_prompt}],
-    temperature=0.5
+    temperature=0.4
     )
     response_text = chat_response.choices[0].message.content
     #response_text = "I found some influencers matching your criteria:\n" + results[display_cols].head(5).to_string()

@@ -28,16 +28,6 @@ if Niche_query := st.chat_input("Campaign Requirements"):
     st.session_state.messages.append({"role":"AI","content":st.session_state.results["response"]})
     st.session_state.response_shown = True  # Show the button from now on
 
-# Show extra button after output is generated
-if st.session_state.response_shown and st.session_state.results:
-
-    st.download_button(
-    label="Download Personalized Emails as CSV",
-    data= csv_out(st.session_state.results["response"]).to_csv().encode('utf-8'),  # Convert DataFrame to CSV bytes
-    file_name='Personalized_Emails.csv',
-    mime='text/csv',
-    key="download_csv"
-)
 
 
           
